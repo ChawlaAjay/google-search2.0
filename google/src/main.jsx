@@ -6,11 +6,9 @@ import { ResultContextProvider }  from './contexts/ResultContextProvider'
 import './global.css'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <ResultContextProvider>
-  
-  // </ResultContextProvider>
-
-  <Router>
-    <App />
-  </Router>
+  <ResultContextProvider>
+    <Router>
+      <App />
+    </Router>
+  </ResultContextProvider>
 );

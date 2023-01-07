@@ -23,11 +23,11 @@ export const ResultContextProvider = ({ children }) => {
     setIsLoading(false);
   };
   return (
-    <ResultContextProvider.Provider
+    <ResultContext.Provider
       value={{ getResult, results, searchTerm, setSearchTerm, isLoading }}
     >
       {children}
-    </ResultContextProvider.Provider>
+    </ResultContext.Provider>
   );
 };
 
