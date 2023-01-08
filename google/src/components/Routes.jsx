@@ -1,13 +1,14 @@
 import React from 'react'
 import {Routes as Rt} from 'react-router-dom'
-import {Route,redirect } from 'react-router-dom'
+import {Route,redirect,Navigate } from 'react-router-dom'
 import Results from './Results'
 const Routes = () => {
   return (
     <div className="p-4">
       <Rt>
         <Route path="/" >
-          redirect('/search')
+          redirect('/search')f
+          {/* <Navigate to='/search' /> */}
         </Route>
 
         <Route path="/search" element={<Results />}></Route>
