@@ -9,22 +9,28 @@ export const ResultContextProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   // /videos or /search or /images
-  const getResult = async (url) => {
+  const getResults = async (url) => {
     setIsLoading(true);
-    const response = await fetch(`${baseUrl}${type}`, {
+    const response = await fetch(`${baseUrl}${url}`, {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "d6fdb56c41msh8fdf4c0b3c1c26bp1bdb48jsn7c55c5111c53",
+        "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
         "X-RapidAPI-Host": "google-search72.p.rapidapi.com",
       },
     });
     const data = await response.json();
-    setResults(data);
+    if (type.includes( '/news')) {
+      setResults( data.entries);
+    } else if(type.includes('/images')){
+      setResults( data.image_results)
+    } else {
+      setResults( data.results)
+    }
     setIsLoading(false);
   };
   return (
     <ResultContext.Provider
-      value={{ getResult, results, searchTerm, setSearchTerm, isLoading }}
+      value={{ getResults, results, searchTerm, setSearchTerm, isLoading }}
     >
       {children}
     </ResultContext.Provider>
